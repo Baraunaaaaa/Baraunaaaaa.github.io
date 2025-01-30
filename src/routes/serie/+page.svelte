@@ -1,72 +1,74 @@
 <script>
-  let series = [
-    {
-      title: "Stranger Things",
-      description: "Um grupo de crianças enfrenta fenômenos paranormais em sua cidade.",
-      imdbLink: "https://www.imdb.com/title/tt4574334/"
-    },
-    {
-      title: "Breaking Bad",
-      description: "A história de Walter White, um professor de química que se torna traficante de drogas.",
-      imdbLink: "https://www.imdb.com/title/tt0903747/"
-    },
-    {
-      title: "The Mandalorian",
-      description: "O Mandaloriano busca capturar uma misteriosa criatura no universo de Star Wars.",
-      imdbLink: "https://www.imdb.com/title/tt7562112/"
-    },
-    {
-      title: "Game of Thrones",
-      description: "A disputa pelo Trono de Ferro no mundo de Westeros.",
-      imdbLink: "https://www.imdb.com/title/tt0944947/"
-    }
+  import { writable } from 'data.js';
+  let activeTab = writable(0);
+
+  const series = [
+    { name: "The Bear", imdb: "https://www.imdb.com/title/tt14452776/" },
+    { name: "The Office", imdb: "https://www.imdb.com/title/tt0386676/" },
+    { name: "Brooklyn Nine-Nine", imdb: "https://www.imdb.com/title/tt2467372/" },
+    { name: "Black Bird", imdb: "https://www.imdb.com/title/tt4301160/" },
+    { name: "Stranger Things", imdb: "https://www.imdb.com/title/tt4574334/" },
+    { name: "Dexter", imdb: "https://www.imdb.com/title/tt0773262/" },
+    { name: "Sex and the City", imdb: "https://www.imdb.com/title/tt0159206/" }
   ];
+
+  let opinions = writable("");
+  let publicOpinions = writable([]);
+  let myOpinion = writable("");
 </script>
 
-<main>
-  <h1>Séries Famosas</h1>
-  <ul>
-    {#each series as serie}
-      <li>
-        <h2>{serie.title}</h2>
-        <p>{serie.description}</p>
-        <a href={serie.imdbLink} target="_blank">Ver no IMDb</a>
-      </li>
-    {/each}
-  </ul>
-</main>
-
 <style>
-  main {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f4f4f4;
-    color: #333;
-  }
-
-  h1 {
-    color: #5a2e5b;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    background-color: white;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-
-  a {
-    color: #0077cc;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
+  .tabs { display: flex; gap: 10px; cursor: pointer; padding: 10px; }
+  .tab-content { padding: 20px; }
+  button { margin-top: 10px; }
 </style>
+
+<div class="tabs">
+  <div on:click={() => activeTab.set(0)}>Séries</div>
+  <div on:click={() => activeTab.set(1)}>Opiniões do Público</div>
+  <div on:click={() => activeTab.set(2)}>Minha Opinião</div>
+</div>
+
+{#if $activeTab === 0}
+  <div class="tab-content">
+    <h2>Lista de Séries</h2>
+    {#each series as serie}
+      <div>
+        <a href={serie.imdb} target="_blank">{serie.name}</a>
+      </div>
+    {/each}
+  </div>
+{/if}
+
+{#if $activeTab === 1}
+  <div class="tab-content">
+    <h2>Opiniões do Público</h2>
+    <textarea bind:value={$opinions} placeholder="Escreva sua opinião aqui..."></textarea>
+    <button on:click={() => { $publicOpinions = [...$publicOpinions, $opinions]; $opinions = ""; }}>Enviar Opinião</button>
+  </div>
+{/if}
+
+{#if $activeTab === 2}
+  <div class="tab-content">
+    <h2>Minha Opinião</h2>
+    <textarea bind:value={$myOpinion} placeholder="Escreva sua opinião pessoal..."></textarea>
+  </div>
+{/if}
+
+{#if $activeTab === 3}
+  <div class="tab-content">
+    <h2>Todas Opiniões do Público</h2>
+    {#each $publicOpinions as opinion}
+      <p>{opinion}</p>
+    {/each}
+  </div>
+{/if}
+
+{#if $activeTab === 4}
+  <div class="tab-content">
+    <h2>Minha Opinião Detalhada</h2>
+    <p>{ $myOpinion }</p>
+  </div>
+{/if}
+
+
