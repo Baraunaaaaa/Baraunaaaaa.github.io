@@ -1,8 +1,41 @@
 <script>
-    import { filmes, gêneros } from '$lib/serie.js';
+    import { series, gêneros } from '$lib/serie.js';
   
     let gênerosSelecionados = $state([]);
     let filtrados = $state(series.slice());
+    let gênerosSelecionados = writable([]);
+    let tituloFiltro = writable("");
+    let filtrados = writable(series);
+
+    function filtrarGenero(event) {
+        gênerosSelecionados.update(generos => {
+            if (event.target.checked) {
+                generos.push(event.target.value);
+            } else {
+                generos = generos.filter(g => g !== event.target.value);
+            }
+            atualizarFiltrados();
+            return generos;
+        });
+    }
+
+    function filtrarTitulo(event) {
+        tituloFiltro.set(event.target.value.toLowerCase());
+        atualizarFiltrados();
+    }
+
+    function atualizarFiltrados() {
+        const filtroTitulo = $tituloFiltro;
+        const generos = $gênerosSelecionados;
+
+        filtrados.set(
+            series.filter(serie => 
+                (generos.length === 0 || generos.some(g => serie.gêneros.includes(g))) &&
+                (filtroTitulo === "" || serie.título.toLowerCase().includes(filtroTitulo))
+            )
+        );
+    }
+
   
     function filtrarGenero(event) {
         if (event.target.checked) {
@@ -52,7 +85,7 @@
                             <h6 class="card-subtitle mb-2 text-body-secondary">{series.ano}</h6>
                             <p class="card-text">{series.sinopse}</p>
                             <p class="card-text">
-                                {#each filme.gêneros as gênero}
+                                {#each series.gêneros as gênero}
                                     <span class="badge text-bg-secondary mx-1">{gênero}</span>
                                 {/each}
                             </p>
