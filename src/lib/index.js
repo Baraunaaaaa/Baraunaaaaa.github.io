@@ -1,1 +1,3 @@
-// place files you want to import through the `$lib` alias in this folder.
+// Exporta tudo para uso externo
+export * from './series.js';
+
