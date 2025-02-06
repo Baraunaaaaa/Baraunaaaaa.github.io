@@ -28,7 +28,28 @@
         atualizarFiltrados();
     }
   </script>
-  
+ <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Barauna series</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Favoritos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sobre</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
   <div class="row align-items-center mb-3">
     <div class="col"><input oninput={atualizarPesquisa} class="form-control" placeholder="Filtrar..." /></div>
     {#each generos as generos}
@@ -68,5 +89,56 @@
         </div>
     {/each}
   </div>
+  <style>
+    
+    .custom-navbar {
+      background-color: #8a66fd;
+    }
+    
+    .custom-navbar .navbar-brand {
+      color: #ffffdf; 
+      font-weight: bold;
+    }
+    
+    .custom-navbar .navbar-toggler-icon {
+      background-color: #ffffdf; 
+    }
+    
+    .custom-navbar .nav-link {
+      color: #ffffdf; 
+    }
+    
+    .custom-navbar .nav-link:hover {
+      color: #8a66fd; 
+      background-color: #ffffdf; 
+    }
+    
+    .custom-navbar .nav-item.active .nav-link {
+      color: #8a66fd; 
+    }
+    
+    .custom-navbar .navbar-toggler {
+      border-color: #ffffdf; 
+    }
+     
+   
+.btn-primary {
+  background-color: #8a66fd; 
+  border-color: #8a66fd; 
+}
+
+.btn-primary:hover {
+  background-color: #6f4ec6; 
+  border-color: #6f4ec6; 
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 0.25rem rgba(138, 102, 253, 0.5); 
+}
+
+
+
+ </style>
+    
   
   
