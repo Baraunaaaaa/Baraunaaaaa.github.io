@@ -41,7 +41,7 @@
 
 <nav class="navbar navbar-expand-lg custom-navbar">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="/">Barauna Series</a>
+		<a class="navbar-brand" href="/">Barauna Séries</a>
 		<button
 			class="navbar-toggler"
 			type="button"
