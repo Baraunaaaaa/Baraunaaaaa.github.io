@@ -67,7 +67,7 @@
 		</div>
 	</div>
 </nav>
-<h1 class="texto">Algumas curiosidades sobre as minhas series favoritas</h1>
+<h1 class="texto">Algumas curiosidades sobre as minhas séries favoritas</h1>
 <main>
 	<div>
 		<div class="series-container"></div>

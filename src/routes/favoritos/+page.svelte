@@ -68,7 +68,7 @@
 		</div>
 	</div>
 </nav>
-<h1 class="texto"><p>Aqui selecionei minhas cinco series favoritas do momento</p>
+<h1 class="texto"><p>Aqui selecionei minhas cinco séries favoritas do momento</p>
 </h1>
 
 
