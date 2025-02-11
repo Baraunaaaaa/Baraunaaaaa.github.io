@@ -34,7 +34,7 @@
 			descricao:
 				'Uma animação baseada no universo de League of Legends, explorando a rivalidade entre Piltover e Zaun.',
 			imagem:
-				'https://sm.ign.com/ign_pt/image/a/arcane-sea/arcane-season-1-gets-4k-blu-ray-release-in-rare-move-for-a-n_xdu3.jpg'
+				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbEFsHD0tqJOiy0Qo2_CUMVLoVqMZEclqXFQ&s'
 		}
 	];
 </script>
