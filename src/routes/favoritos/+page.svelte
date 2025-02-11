@@ -1,7 +1,7 @@
 <script>
 	let seriesFavoritas = [
 		{
-			titulo: 'the bear',
+			titulo: 'The bear',
 			ano: '2022',
 			descricao:
 				'Carmen luta para transformar a lanchonete da familia e a si mesmo enquanto trabalha ao lado de uma equipe rude.',
